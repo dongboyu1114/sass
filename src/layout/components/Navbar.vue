@@ -9,21 +9,14 @@
     <div class="right-menu">
       <el-dropdown class="avatar-container" trigger="click">
         <div class="avatar-wrapper">
-          <img v-Imageerror="defaultImg" :src="staffPhoto" class="user-avatar"><span class="name">{{ name }}</span>
+          <img v-imageerror="defaultImg" :src="staffPhoto" class="user-avatar">
+          <span class="name">{{ name }}</span>
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown" class="user-dropdown">
-          <router-link to="/">
-            <el-dropdown-item>
-              首页
-            </el-dropdown-item>
-          </router-link>
-          <a target="_blank" href="https://github.com/PanJiaChen/vue-admin-template/">
-            <el-dropdown-item>项目地址</el-dropdown-item>
-          </a>
-          <el-dropdown-item divided @click.native="logout">
-            <span style="display:block;">退出登录</span>
-          </el-dropdown-item>
+          <router-link to="/"><el-dropdown-item>首页</el-dropdown-item></router-link>
+          <a target="_blank" href="https://github.com/PanJiaChen/vue-admin-template/"><el-dropdown-item>项目地址</el-dropdown-item></a>
+          <el-dropdown-item divided @click.native="logout"><span style="display:block;">退出登录</span></el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -35,21 +28,17 @@ import { mapGetters } from 'vuex'
 import Hamburger from '@/components/Hamburger'
 export default {
   components: { Hamburger },
-  data () {
+  data() {
     return { defaultImg: require('@/assets/common/head.jpg') }
   },
   computed: {
-    ...mapGetters([
-      'sidebar',
-      'name',
-      'staffPhoto'
-    ])
+    ...mapGetters(['sidebar', 'name', 'staffPhoto'])
   },
   methods: {
-    toggleSideBar () {
+    toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
     },
-    async logout () {
+    async logout() {
       await this.$store.dispatch('user/logout')
       this.$router.push(`/login`) // 跳到登录
     }
@@ -63,18 +52,18 @@ export default {
   overflow: hidden;
   position: relative;
   background-image: -webkit-linear-gradient(left, #3d6df8, #5b8cff);
-  box-shadow: 0 1px 4px rgba(0, 21, 41, .08);
+  box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
 
   .hamburger-container {
     line-height: 46px;
     height: 100%;
     float: left;
     cursor: pointer;
-    transition: background .3s;
+    transition: background 0.3s;
     -webkit-tap-highlight-color: transparent;
 
     &:hover {
-      background: rgba(0, 0, 0, .025)
+      background: rgba(0, 0, 0, 0.025);
     }
   }
 
@@ -127,10 +116,10 @@ export default {
 
       &.hover-effect {
         cursor: pointer;
-        transition: background .3s;
+        transition: background 0.3s;
 
         &:hover {
-          background: rgba(0, 0, 0, .025)
+          background: rgba(0, 0, 0, 0.025);
         }
       }
     }
@@ -148,7 +137,6 @@ export default {
           height: 30px;
           border-radius: 15px;
           vertical-align: middle;
-
         }
 
         .el-icon-caret-bottom {
